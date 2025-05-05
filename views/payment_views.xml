@@ -1,18 +1,16 @@
 <odoo>
-    <!-- Heredamos la vista de pago estándar -->
+    <!-- Vista heredada de 'payment.view_payment_form' -->
     <record id="view_payment_form_inherit_dlocal" model="ir.ui.view">
         <field name="name">payment.transaction.form.inherit.dlocal</field>
         <field name="model">payment.transaction</field>
-        <field name="inherit_id" ref="payment.view_payment_form"/>  <!-- Vista estándar de pago -->
+        <field name="inherit_id" ref="payment.view_payment_form"/> <!-- Vista estándar de pago -->
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="after">
-                <!-- Agregamos el campo payment_method y dlocal_transaction_id -->
                 <field name="payment_method"/>
                 <field name="dlocal_transaction_id"/>
             </xpath>
             <xpath expr="//form" position="inside">
                 <footer position="inside">
-                    <!-- Botón para confirmar pago (sin funcionalidad por ahora) -->
                     <button string="Confirm Payment" type="object" name="confirm_payment" class="btn-primary"/>
                 </footer>
             </xpath>
