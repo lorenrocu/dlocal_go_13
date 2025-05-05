@@ -7,8 +7,8 @@
                 <sheet>
                     <group>
                         <field name="amount"/>
-                        <field name="payment_method"/>
                         <field name="state"/>
+                        <field name="payment_method"/>
                         <field name="dlocal_transaction_id"/>
                     </group>
                     <footer>
@@ -17,12 +17,5 @@
                 </sheet>
             </form>
         </field>
-    </record>
-
-    <record id="action_payment_transaction" model="ir.actions.act_window">
-        <field name="name">Payments</field>
-        <field name="res_model">payment.transaction</field>
-        <field name="view_mode">tree,form</field>
-        <field name="view_id" ref="view_payment_form"/>
     </record>
 </odoo>
