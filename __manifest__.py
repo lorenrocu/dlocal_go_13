@@ -1,12 +1,12 @@
 {
-    'name': 'dlocal Go 13 Payment Gateway',
+    'name': 'dlocal Go 13 Payment Gateway.',
     'version': '1.0',
     'category': 'Sales',
     'summary': 'Integración de la pasarela de pagos dlocal_go_13',
     'description': """
         Este módulo proporciona una integración de la pasarela de pagos dlocal_go_13 para Odoo.
     """,
-    'author': 'Tu nombre o empresa',
+    'author': 'Lorenzo Romero',
     'depends': ['payment'],
     'data': [
         'views/payment_views.xml',  # Vista para gestionar pagos
