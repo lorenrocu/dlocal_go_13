@@ -2,7 +2,7 @@
     <record id="view_payment_form" model="ir.ui.view">
         <field name="name">payment.transaction.form.inherit.dlocal</field>
         <field name="model">payment.transaction</field>
-        <field name="inherit_id" ref="payment.transaction_form"/>
+        <field name="inherit_id" ref="payment.view_transaction_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='state']" position="after">
                 <field name="payment_method"/>
