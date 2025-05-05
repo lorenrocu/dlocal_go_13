@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Configuración básica para el proveedor de pagos dlocal -->
+        <record id="payment_acquirer_dlocal" model="payment.acquirer">
+            <field name="name">dlocal</field>
+            <field name="provider">dlocal</field>
+            <field name="company_id" ref="base.main_company"/>
+            <field name="view_template_id" ref="payment.default_acquirer_button"/>
+            <field name="description" type="html">
+                <p>dlocal ofrece servicios de procesamiento de pagos en línea.</p>
+            </field>
+            <field name="environment">test</field>
+            <field name="pre_msg">
+                <p>Serás redirigido a la pasarela de pago dlocal para completar el pago.</p>
+            </field>
+        </record>
+    </data>
+</odoo>

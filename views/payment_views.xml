@@ -1,21 +1,18 @@
 <odoo>
     <record id="view_payment_form" model="ir.ui.view">
-        <field name="name">payment.transaction.form</field>
+        <field name="name">payment.transaction.form.inherit.dlocal</field>
         <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.transaction_form"/>
         <field name="arch" type="xml">
-            <form string="Payment Transaction">
-                <sheet>
-                    <group>
-                        <field name="amount"/>
-                        <field name="state"/>
-                        <field name="payment_method"/>
-                        <field name="dlocal_transaction_id"/>
-                    </group>
-                    <footer>
-                        <button string="Confirm Payment" type="object" name="confirm_payment" class="btn-primary"/>
-                    </footer>
-                </sheet>
-            </form>
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="payment_method"/>
+                <field name="dlocal_transaction_id"/>
+            </xpath>
+            <xpath expr="//form" position="inside">
+                <footer position="inside">
+                    <button string="Confirm Payment" type="object" name="confirm_payment" class="btn-primary"/>
+                </footer>
+            </xpath>
         </field>
     </record>
 </odoo>

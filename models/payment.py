@@ -65,3 +65,27 @@ class PaymentTransaction(models.Model):
             # Si ocurre un error en la conexión, lo registramos
             _logger.error("Error al procesar el pago con dlocal: %s", e)
             return None
+            
+    def confirm_payment(self):
+        """Método para confirmar el pago manualmente desde la interfaz"""
+        if self.state != 'done':
+            # Llamamos a la API de dlocal para procesar el pago
+            response = self.process_payment_with_dlocal(self.amount, self.payment_method)
+            
+            # Verificamos la respuesta de la API de dlocal
+            if response and response.get("status") == "success":
+                self.state = "done"
+                self.dlocal_transaction_id = response.get("transaction_id")
+                return {'type': 'ir.actions.client', 'tag': 'reload'}
+            else:
+                self.state = "failed"
+                return {
+                    'type': 'ir.actions.client',
+                    'tag': 'display_notification',
+                    'params': {
+                        'title': 'Error',
+                        'message': 'No se pudo procesar el pago',
+                        'type': 'danger',
+                    }
+                }
+        return {'type': 'ir.actions.client', 'tag': 'reload'}
